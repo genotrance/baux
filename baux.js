@@ -1,6 +1,6 @@
 // Globals
 var baux_dirty = false;
-var baux_dbox = "https://dl.dropboxusercontent.com/u/786577/baux/baux.html";
+var baux_dbox = "https://genotrance.github.io/baux/";
 var baux_couch = "https://gt.iriscouch.com/";
 var baux_jquery = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js";
 var baux_aes = "https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js";

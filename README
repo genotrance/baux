@@ -1,0 +1,26 @@
+Baux (pronounced Box) is a simple browser based notes application. It runs
+completely in the browser - no server side application processing - and stores 
+notes in a remote CouchDB instance (currently hosted on iriscouch.com).
+
+Notes are to be titled with any unique and memorizable sentence. This key is
+used to generate a unique ID in the database as well as to encrypt the contents
+of the note.
+
+Security and privacy are ensured as follows:-
+- The key only exists in the browser and is never transmitted
+- It is hashed using SHA1 to generate a unique ID for the database
+- It is used as the key with which the note contents are AES encypted
+
+On the database side, there is no way to access any user data since the key is
+not recoverable from the hash, nor are the contents recoverable without the key.
+
+Baux is currently hosted on GitHub pages but can be run completely in the 
+browser as a bookmarklet. There is no dependency on GitHub beyond the initial
+bookmarklet creation. Permalinks to notes are offered on GitHub and are shareable
+for convenience but is not required. Sharing the key is sufficient to access any
+note.
+
+The bookmarklet runs on most web pages as an overlay and can be used to store
+notes that are context sensitive to that page. The last key is saved as a cookie
+for convenience. This will be changed to localstorage to avoid transmitting the
+key to the server (currently GitHub whose logs are inaccessible to us anyway).
