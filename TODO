@@ -1,0 +1,8 @@
+- Use localstorage instead of cookie for caching key in browser
+- Add bookmarklet link with JS code minimized
+- Display README as help on GUI
+- Move links into dropdown menu
+- Add delete button to delete note remotely
+- Clearing key should remove it from localstorage
+- Option to generate key rather than startup blank
+- Multiple keys cached locally and presented in combobox selector
