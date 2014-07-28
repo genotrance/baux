@@ -24,3 +24,9 @@ The bookmarklet runs on most web pages as an overlay and can be used to store
 notes that are context sensitive to that page. The last key is saved as a cookie
 for convenience. This will be changed to localstorage to avoid transmitting the
 key to the server (currently GitHub whose logs are inaccessible to us anyway).
+
+Also included is a Tasker script that can directly load a note into the clipboard
+of an Android device. This provides a simple mechanism to send notes from your PC
+to an Android device. The Baux.tsk.xml in the 'tasker' directory can be loaded 
+into Tasker and can be invoked via a Tasker home screen shortcut. Change the first
+action of the Baux task to specify the unique key of the note to be loaded.
