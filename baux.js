@@ -12,8 +12,12 @@ var baux_hash = "";
 var baux_rev = "";
 var baux_note = null;
 var baux_deps = [baux_jquery, baux_aes, baux_sha1, baux_cookie];
-var baux_mobile = window.matchMedia("only screen and (max-width: 760px)");
+var baux_mobile = false;
 
+if (window.matchMedia) {
+	var baux_mobile = window.matchMedia("only screen and (max-width: 760px)");
+}
+	
 // HTML
 var baux_gui =
 	'<div id="baux_popup" name="baux_popup">' +
@@ -39,15 +43,16 @@ function baux_load_scripts()
 	if (baux_deps.length == 0) {
 		callback = baux_initialize;
 	}
-
-    script.onreadystatechange = callback;
-    script.onload = callback;
+	
+	script.onload = callback;
 
     head.appendChild(script);
 }
 
 // Initialization routine
 function baux_initialize() {
+	jQuery.support.cors = true;
+	
 	baux_setup_gui();
 	baux_bind_events();
 	baux_setup_couch();
@@ -75,7 +80,7 @@ function baux_setup_gui() {
 		"background-color": "white",
 		"opacity": 1,
 		"filter": "alpha(opacity=100)",
-		"-moz-opacity": 1, 
+		"-moz-opacity": 1
 	});
 	
 	$("#baux_message").css({
@@ -98,7 +103,7 @@ function baux_setup_gui() {
 		"font-family": "Arial",
 		"font-size": "10",
 		"color": "blue",
-		"text-decoration": "underline",
+		"text-decoration": "underline"
 	});
 
 	baux_note = $("#baux_note_data");
@@ -110,7 +115,7 @@ function baux_setup_gui() {
 		
 		"-webkit-box-sizing": "border-box",
 		"-moz-box-sizing": "border-box",
-		"box-sizing": "border-box",
+		"box-sizing": "border-box"
 	});
 	baux_note.focus();
 }
@@ -128,7 +133,7 @@ function baux_bind_events() {
 function baux_resize() {
 	$("#baux_popup").css({
 		"width": $(window).width()-30,
-		"height": $(window).height()-30,
+		"height": $(window).height()-30
 	});
 }
 
@@ -198,7 +203,8 @@ function baux_load() {
 			baux_rev = data._rev;
 			$("#baux_message").hide(500);
 		},
-		error: function(data) {
+		error: function(data, ajaxOptions, thrownError) {
+			console.log(thrownError);
 			baux_note.val("");
 			$("#baux_message").hide(500);
 		}
